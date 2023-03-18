@@ -1,46 +1,44 @@
 
-var matrix = Array(5){IntArray(5)}
-var increase = 1
+class Automoviles(){
 
-for(i in 0 until matrix.size){
-    for(j in 0 until matrix[i].size){
-        matrix[i][j] = increase
-        increase++
-    }
-}
+    private var color = ""
+    private var modelo = 0
+    private var marca = ""
+    private var acceso = false
 
-for(i in 0 until matrix.size){
-    for(j in 0 until matrix.size){
-        print("${matrix[i][j]}\t")
-    }
-    println()
-}
-
-var diagonalPrincipal = IntArray(matrix.size)
-var diagonalSecundaria = IntArray(matrix.size)
-
-for(i in 0 until matrix.size){
-    for(j in 0 until matrix[i].size){
-        if(i==j){
-            diagonalPrincipal[i] = matrix[i][j]
-        }
-        if((i+j)==matrix.size-1){
-            diagonalSecundaria[i] = matrix[i][j]
+    public fun meterLLave(llave : String){
+        if (llave=="123456"){
+            acceso = true
+            println("Tienes acceso al automovil")
+        }else{
+            println("Llave incorrecta *encender alarma*")
         }
     }
+
+    public fun mando(accion: String){
+        if (acceso==true){
+            if (accion=="encender"){
+                encender()
+            }
+        }else{
+            println("Llave incorrecta")
+        }
+    }
+    private fun encender(){
+        println("El auto enciende por boton")
+    }
+    private fun arranca(){
+        println("El auto arranca en Directa")
+    }
+
+    private fun frena(){
+        println("El auto frena con el pedal")
+    }
+    private fun apaga(){
+        println("El auto se apaga por boton")
+    }
 }
-var sumas = 0
-diagonalPrincipal.forEach {
-    print("$it\t")
-    sumas = sumas+it}
-print("= $sumas")
 
-sumas = 0
-diagonalSecundaria.forEach {
-    print("$it\t")
-    sumas = sumas + it
-}
-    print("= $sumas")
-
-
-
+var bmwx6 = Automoviles()
+bmwx6.meterLLave("123456")
+bmwx6.mando("encender")
